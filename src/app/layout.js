@@ -1,7 +1,20 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Karla, Open_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const karla = Karla({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-karla',
+  weight: [ "200", "300", "400", "500", "600", "700"],
+})
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-open_sans',
+  weight: [ "300", "400", "500", "600", "700"],
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.variable} ${karla.variable} ${openSans.variable}`}>{children}</body>
     </html>
   )
 }
