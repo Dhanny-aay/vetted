@@ -8,3 +8,9 @@ body {
   color: #000;
   background: #f9f9f9;
 }
+.centered {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+

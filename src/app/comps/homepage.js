@@ -9,13 +9,20 @@ import pen from "../images/pen.svg";
 import link from "../images/link.svg";
 import arr_down from "../images/arr_down.svg";
 import measure from "../images/measure.svg";
+import order from "../images/order.svg";
+import product from "../images/product.svg";
+import customer from "../images/customer.svg";
+import user from "../images/user.svg";
+import logout from "../images/logout.svg";
+import Tranchistory from "./tranchistory";
+import Vettedapp from "./vettedapp";
 const Homepage = () => {
     return ( 
         <>
         <div className="w-full h-[100vh] relative">
             {/* sidebar */}
             <div className=" w-[25%] h-[100vh] fixed top-0 left-0 bg-gradient-to-b from-[#00F0FFCC] from-0.5% via-[#5376FFCC] to-[#000CB6CC] px-6 py-4 flex">
-                <div className=" flex flex-col mt-[32px] w-full items-center">
+                <div className=" flex flex-col w-full mt-[32px] items-center">
                     <div className=" flex flex-row w-full justify-center">
                         <span className=" w-[60px] h-[60px] bg-[#fff] rounded-[50px] flex items-center justify-center shadow-lg">
                             <button className=" w-[55px] h-[55px] rounded-[50%] bg-[#000CB6]">
@@ -42,24 +49,24 @@ const Homepage = () => {
                             <p className=" font-Karla font-medium">Measurment</p>
                         </button>
                         <button className=" flex space-x-5">
-                            <Image src={ measure } alt="" />
+                            <Image src={ order } alt="" />
                             <p className=" font-Karla font-medium">Orders</p>
                         </button>
                         <button className=" flex space-x-5">
-                            <Image src={ measure } alt="" />
+                            <Image src={ product } alt="" />
                             <p className=" font-Karla font-medium">Products</p>
                         </button>
                         <button className=" flex space-x-5">
-                            <Image src={ measure } alt="" />
+                            <Image src={ customer } alt="" />
                             <p className=" font-Karla font-medium">Customers</p>
                         </button>
-                        <button className=" flex space-x-5">
-                            <Image src={ measure } alt="" />
+                        <button className=" flex space-x-5 bg-white text-black -ml-6  w-[190px] rounded-r-[50px]">
+                            <Image src={ user } className=" ml-6" alt="" />
                             <p className=" font-Karla font-medium">My Profile</p>
                         </button>
                         <button className=" flex space-x-5">
-                            <Image src={ measure } alt="" />
-                            <p className=" font-Karla font-medium">Measurment</p>
+                            <Image src={ logout } alt="" />
+                            <p className=" font-Karla font-medium">logout</p>
                         </button>
                     </span>
                 </div>
@@ -78,12 +85,14 @@ const Homepage = () => {
                 </span> 
             </div>
         </div>
-        <div className=" w-[75%] h-[90vh] bg-transparent fixed top-[10vh] right-0 ">
-           
+        {/* body */}
+        <div className=" w-[75%] h-[90vh] bg-transparent fixed top-[10vh] right-0  overflow-y-auto">
+           {/* <Tranchistory/> */}
+           <Vettedapp/>
         </div>
         <Image src={ fist } className=" absolute bottom-0 left-0" alt="" />
-        <Image src={ rock } className=" absolute bottom-0 right-0" alt="" />
-        <Image src={ hand_one_finger } className=" top-0 absolute z-10 right-0" alt="" />
+        <Image src={ rock } className=" absolute bottom-0 -z-10 right-0" alt="" />
+        <Image src={ hand_one_finger } className=" top-0 absolute -z-10 right-0" alt="" />
         <Image src={ fitted } className=" absolute top-4 left-4" alt="" />
         </>
      );
