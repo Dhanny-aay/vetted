@@ -2,7 +2,7 @@
 import Image from "next/image";
 import photo from "../images/photo.svg";
 import call from "../images/call.svg";
-import more from "../images/more.png";
+import more from "../images/that.png";
 
 const Tranchistory = ({ onButtonClick }) => {
     const data = [
