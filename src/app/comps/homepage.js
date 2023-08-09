@@ -118,7 +118,7 @@ const Homepage = () => {
            { vettedApplication && <Vettedapp onButtonClick={sucTrue}/>}
            { sucessStat && <Success onButtonClick={returnClick}/>}
         </div>
-        <Image src={ fist } className=" hidden md:block absolute bottom-0 left-0" alt="" />
+        <Image src={ fist } className=" hidden md:block absolute bottom-0 -z-10 left-0" alt="" />
         <Image src={ rock } className="hidden md:block  absolute bottom-0 -z-10 right-0" alt="" />
         <Image src={ hand_one_finger } className="hidden md:block top-0 absolute -z-10 right-0" alt="" />
         <Image src={ fitted } className="hidden md:block absolute top-4 left-4" alt="" />

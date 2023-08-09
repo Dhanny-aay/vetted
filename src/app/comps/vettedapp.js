@@ -8,6 +8,9 @@ const Vettedapp = ({onButtonClick}) => {
     const [selectedBank, setSelectedBank] = useState('');
     const [selectedBankCode, setSelectedBankCode] = useState('');
     const [accountNumber, setAccountNumber] = useState('');
+    const [accountNanme, setAccountName] = useState('');
+    const [valid, setValid] = useState(true);
+    const [apply, setApply] = useState(false);
     const [status, setStatus] = useState('');
 
     // fetch bank data
@@ -64,15 +67,19 @@ const Vettedapp = ({onButtonClick}) => {
     
           const resolvedData = await response.json();
             console.log('Resolved account data:', resolvedData);
+            // console.log('account name:', resolvedData.content.data.account_name);
           const stat = resolvedData.status;
           if(!stat){
             alert('Opps, Account details not found')
           }
           else if(stat){
-            onButtonClick();
+            setAccountName(resolvedData.content.data.account_name);
+            if(!accountNanme){
+                setApply(true);
+                setValid(false);
+            }
           }
         } catch (error) {
-            
           console.error('Error resolving account:', error);
 
         }
@@ -101,13 +108,13 @@ const Vettedapp = ({onButtonClick}) => {
                     <span className=" w-[120px] h-[120px] rounded-[21px] mb-8 bg-white shadow-lg flex justify-center items-center p-1">
                         <Image src={ photo } className="" alt="" />
                     </span>
-                    <p className=" font-bold font-Karla text-base text-[#828282] w-full text-left">Name:<span className=" text-[#3F434A]">Samuel Oladokun</span></p>
-                    <p className=" font-bold font-Karla text-base text-[#828282] text-left ">Gender:<span className=" text-[#3F434A]">Male</span></p>
-                    <p className=" font-bold font-Karla text-base text-[#828282] text-left ">Name:<span className=" text-[#3F434A]">Both</span></p>
-                    <p className=" font-bold font-Karla text-base text-[#828282] text-left ">Sew Gender:<span className=" text-[#3F434A]">Samuel Oladokun</span></p>
-                    <p className=" font-bold font-Karla text-base text-[#828282] text-left ">Phone Number:<span className=" text-[#3F434A]">08137901372</span></p>
-                    <p className=" font-bold font-Karla text-base text-[#828282] text-left ">Email Address:<span className=" text-[#3F434A]">biola@fitted.ng</span></p>
-                    <p className=" font-bold font-Karla text-base text-[#828282] text-left ">Location:<span className=" text-[#3F434A]">Lagos, Nigeria</span></p>
+                    <p className=" font-bold font-Karla text-base flex justify-between md:w-[300px] w-[70vw] text-[#828282] text-left">Name:<span className=" text-[#3F434A]">Samuel Oladokun</span></p>
+                    <p className=" font-bold font-Karla text-base flex justify-between md:w-[300px] w-[70vw] text-[#828282] text-left ">Gender:<span className=" text-[#3F434A]">Male</span></p>
+                    <p className=" font-bold font-Karla text-base flex justify-between md:w-[300px] w-[70vw] text-[#828282] text-left ">Name:<span className=" text-[#3F434A]">Both</span></p>
+                    <p className=" font-bold font-Karla text-base flex justify-between md:w-[300px] w-[70vw] text-[#828282] text-left ">Sew Gender:<span className=" text-[#3F434A]">Samuel Oladokun</span></p>
+                    <p className=" font-bold font-Karla text-base flex justify-between md:w-[300px] w-[70vw] text-[#828282] text-left ">Phone Number:<span className=" text-[#3F434A]">08137901372</span></p>
+                    <p className=" font-bold font-Karla text-base flex justify-between md:w-[300px] w-[70vw] text-[#828282] text-left ">Email Address:<span className=" text-[#3F434A]">biola@fitted.ng</span></p>
+                    <p className=" font-bold font-Karla text-base flex justify-between md:w-[300px] w-[70vw] text-[#828282] text-left ">Location:<span className=" text-[#3F434A]">Lagos, Nigeria</span></p>
                 </div>
                 <div className=" md:w-[48%] mt-5 md:mt-0 flex flex-col items-start space-y-6">
                     <div className=" w-full flex justify-between">
@@ -152,12 +159,15 @@ const Vettedapp = ({onButtonClick}) => {
                     <div className=" w-full">
                         <label className=" w-full text-base text-[#828282] font-Karla">
                         Account Name
-                            <input type="text" className=" w-full h-[40px] border rounded text-[#828282] font-Karla text-sm placeholder:text-sm px-3 py-2" name="" id="" />
+                            <input value={ accountNanme } type="text" className=" w-full h-[40px] border rounded text-[#828282] font-Karla text-sm placeholder:text-sm px-3 py-2" name="" id="" />
                         </label>
                     </div>
-                    <button onClick={validateThenResolve} className=" w-[170px] h-[50px] text-white font-bold font-Karla text-sm italic rounded-[7px] bg-[#b7076bd2]">
+                    { valid && <button onClick={validateThenResolve} className=" w-[170px] h-[50px] text-white font-bold font-Karla text-sm italic rounded-[7px] bg-[#b7076bd2]">
+                        <p>Validate Account</p>
+                    </button>}
+                    { apply && <button onClick={ onButtonClick } className=" w-[170px] h-[50px] text-white font-bold font-Karla text-sm italic rounded-[7px] bg-[#b7076bd2]">
                         <p>Submit Application</p>
-                    </button>
+                    </button>}
                 </div>
             </div>
             </div>
